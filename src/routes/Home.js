@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from "fbase";
+import Kyuwitt from "components/Kyuwitt";
 
 const Home = ({ userObj }) => {
   const [kyuWitt, setKyuWitt] = useState("");
@@ -56,10 +57,12 @@ const Home = ({ userObj }) => {
         <input type="submit" value="✅" />
       </form>
       <div>
-        {mention.map((data) => (
-          <div key={data.id}>
-            <h4>{data.text}</h4>
-          </div>
+        {mention.map((mentions) => (
+          <Kyuwitt
+            key={mentions.id}
+            mentions={mentions}
+            isOwner={mentions.creatorId === userObj.uid}
+          />
         ))}
       </div>
     </div>
