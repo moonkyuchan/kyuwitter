@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 
 const Kyuwitt = ({ mentions, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -9,6 +9,7 @@ const Kyuwitt = ({ mentions, isOwner }) => {
     const confirm = window.confirm("정말 삭제 하시겠습니까?");
     if (confirm) {
       await dbService.doc(`kyuwitter/${mentions.id}`).delete();
+      await storageService.refFromURL(mentions.imgFileUrl);
     }
   };
 
@@ -49,8 +50,15 @@ const Kyuwitt = ({ mentions, isOwner }) => {
         </>
       ) : (
         <>
-          {" "}
           <h4>{mentions.text}</h4>
+          {mentions.imgFileUrl && (
+            <img
+              src={mentions.imgFileUrl}
+              alt=""
+              width="100px"
+              height="100px"
+            />
+          )}
           {isOwner && (
             <>
               <button onClick={deleteKyuwitt}>Delete Kyuwitt</button>
