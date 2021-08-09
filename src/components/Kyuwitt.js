@@ -34,32 +34,34 @@ const Kyuwitt = ({ mentions, isOwner }) => {
 
   return (
     <div className="kyuwitt_wrap">
-      <div className="nweet">
-        {editing ? (
-          <>
-            <form onSubmit={onSubmitEdit} className="container nweetEdit">
-              <input
-                type="text"
-                placeholder="EDIT ! ! "
-                value={newKyuwitt}
-                required
-                onChange={onChangeEdit}
-                className="formInput"
-              />
-              <input type="submit" value="Update ! !" className="formBtn" />
-            </form>
-            <button onClick={toggleEditing} className="formBtn cancelBtn">
-              Cancel
-            </button>
-          </>
-        ) : (
-          <>
-            <h4>{mentions.text}</h4>
-            {mentions.imgFileUrl && <img src={mentions.imgFileUrl} alt="" />}
-          </>
-        )}
+      <div className="kyuwitt_img_wrap">
+        <div className="nweet">
+          {editing ? (
+            <>
+              <form onSubmit={onSubmitEdit} className="container nweetEdit">
+                <input
+                  type="text"
+                  placeholder="EDIT ! ! "
+                  value={newKyuwitt}
+                  required
+                  onChange={onChangeEdit}
+                  className="formInput"
+                />
+                <input type="submit" value="Update ! !" className="formBtn" />
+              </form>
+              <button onClick={toggleEditing} className="formBtn cancelBtn">
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <h4>{mentions.text}</h4>
+            </>
+          )}
+        </div>
+        {mentions.imgFileUrl && <img src={mentions.imgFileUrl} alt="" />}
       </div>
-      <div className="kyuwitt_actions_wrap">
+      <div className="kyuwitt_actions">
         {isOwner && (
           <div className="nweet__actions">
             <button onClick={deleteKyuwitt} className="kyuwitt_btn">
@@ -75,6 +77,7 @@ const Kyuwitt = ({ mentions, isOwner }) => {
           </div>
         )}
       </div>
+      <div></div>
     </div>
   );
 };
