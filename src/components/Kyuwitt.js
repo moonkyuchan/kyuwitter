@@ -33,40 +33,48 @@ const Kyuwitt = ({ mentions, isOwner }) => {
   };
 
   return (
-    <div>
-      {editing ? (
-        <>
-          <form onSubmit={onSubmitEdit}>
-            <input
-              type="text"
-              placeholder="EDIT ! ! "
-              value={newKyuwitt}
-              required
-              onChange={onChangeEdit}
-            />
-            <input type="submit" value="Update ! !" />
-          </form>
-          <button onClick={toggleEditing}>Cancel</button>
-        </>
-      ) : (
-        <>
-          <h4>{mentions.text}</h4>
-          {mentions.imgFileUrl && (
-            <img
-              src={mentions.imgFileUrl}
-              alt=""
-              width="100px"
-              height="100px"
-            />
-          )}
-          {isOwner && (
-            <>
-              <button onClick={deleteKyuwitt}>Delete Kyuwitt</button>
-              <button onClick={toggleEditing}>Edit Kyuwitt</button>
-            </>
-          )}
-        </>
-      )}
+    <div className="kyuwitt_wrap">
+      <div className="nweet">
+        {editing ? (
+          <>
+            <form onSubmit={onSubmitEdit} className="container nweetEdit">
+              <input
+                type="text"
+                placeholder="EDIT ! ! "
+                value={newKyuwitt}
+                required
+                onChange={onChangeEdit}
+                className="formInput"
+              />
+              <input type="submit" value="Update ! !" className="formBtn" />
+            </form>
+            <button onClick={toggleEditing} className="formBtn cancelBtn">
+              Cancel
+            </button>
+          </>
+        ) : (
+          <>
+            <h4>{mentions.text}</h4>
+            {mentions.imgFileUrl && <img src={mentions.imgFileUrl} alt="" />}
+          </>
+        )}
+      </div>
+      <div className="kyuwitt_actions_wrap">
+        {isOwner && (
+          <div className="nweet__actions">
+            <button onClick={deleteKyuwitt} className="kyuwitt_btn">
+              Delete Kyuwitt
+            </button>
+            <button
+              onClick={toggleEditing}
+              className="kyuwitt_btn"
+              style={{ marginLeft: "10px" }}
+            >
+              Edit Kyuwitt
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

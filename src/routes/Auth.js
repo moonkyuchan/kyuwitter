@@ -1,83 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { authService, firebaseInstance } from "fbase";
+import AuthForm from "components/AuthForm";
+import { FcGoogle } from "react-icons/fc";
 
 const Auth = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [newAccount, setNewAccount] = useState(true);
-  const [error, setError] = useState("");
-
-  const onChange = (event) => {
-    const {
-      target: { name, value },
-    } = event;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
-  };
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    let data;
-    try {
-      if (newAccount) {
-        data = await authService.createUserWithEmailAndPassword(
-          email,
-          password
-        );
-      } else {
-        data = await authService.signInWithEmailAndPassword(email, password);
-      }
-      console.log(data);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const toggleAccount = () => {
-    setNewAccount((prev) => !prev);
-  };
-
   const onSocialClick = async (event) => {
     let provider;
     provider = new firebaseInstance.auth.GoogleAuthProvider();
     await authService.signInWithPopup(provider);
   };
   return (
-    <div>
-      <form autoComplete="off" onSubmit={onSubmit}>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={onChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={onChange}
-        />
-        <input
-          type="submit"
-          value={newAccount ? "Create New Account" : "Log In"}
-        />
-        {error}
-      </form>
-      <span onClick={toggleAccount}>
-        {newAccount ? "Log In" : "Create New Account"}
-      </span>
-      <div>
-        <button onClick={onSocialClick} name="google">
+    <div className="authContainer">
+      <AuthForm />
+      <button onClick={onSocialClick} name="google" className="authBtn">
+        <div className="authGoogleWrap">
+          <FcGoogle className="googleIcon" size="20" />
           Continue with Google
-        </button>
-      </div>
+        </div>
+      </button>
     </div>
   );
 };
