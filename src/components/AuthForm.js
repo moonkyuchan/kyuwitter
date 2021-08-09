@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { authService } from "fbase";
+// import "./AuthForm.scss";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -41,14 +42,15 @@ const AuthForm = () => {
   };
   return (
     <>
-      <form autoComplete="off" onSubmit={onSubmit}>
+      <form autoComplete="off" onSubmit={onSubmit} className="container">
         <input
           name="email"
-          type="text"
+          type="email"
           placeholder="Email"
           required
           value={email}
           onChange={onChange}
+          className="authInput"
         />
         <input
           name="password"
@@ -57,14 +59,16 @@ const AuthForm = () => {
           required
           value={password}
           onChange={onChange}
+          className="authInput"
         />
         <input
           type="submit"
           value={newAccount ? "Create New Account" : "Log In"}
+          className="authInput authSubmit"
         />
-        {error}
+        {error && <span className="authError">{error}</span>}
       </form>
-      <span onClick={toggleAccount}>
+      <span onClick={toggleAccount} className="authSwitch">
         {newAccount ? "Log In" : "Create New Account"}
       </span>
     </>

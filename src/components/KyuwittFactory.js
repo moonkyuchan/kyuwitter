@@ -60,19 +60,42 @@ const KyuwittFactory = ({ userObj }) => {
     setImgFile("");
   };
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="factoryForm">
+      <div className="factoryInput__container">
+        <input
+          type="text"
+          placeholder="what's on your mind?"
+          value={kyuWitt}
+          onChange={onChange}
+          maxLength={120}
+          className="factoryInput__input"
+        />
+        <input type="submit" value="yes" className="factoryInput__arrow" />
+      </div>
+      <label for="attach-file" className="factoryInput__label">
+        <span>Add Photo</span>
+      </label>
       <input
-        type="text"
-        placeholder="what's on your mind?"
-        value={kyuWitt}
-        onChange={onChange}
+        id="attach-file"
+        type="file"
+        accept="imgage/*"
+        onChange={onImgChange}
+        style={{
+          opacity: 0,
+        }}
       />
-      <input type="submit" value="✅" />
-      <input type="file" accept="imgage/*" onChange={onImgChange} />
       {imgFile && (
-        <div>
-          <img src={imgFile} alt="" width="50px" height="50px" />
-          <button onClick={onDeleteImgClick}>Clear</button>
+        <div className="factoryForm__attachment">
+          <img
+            src={imgFile}
+            alt=""
+            style={{
+              backgroundImage: imgFile,
+            }}
+          />
+          <div className="factoryForm__clear" onClick={onDeleteImgClick}>
+            <span>Romove</span>
+          </div>
         </div>
       )}
     </form>

@@ -1,6 +1,7 @@
 import React from "react";
 import { authService, firebaseInstance } from "fbase";
 import AuthForm from "components/AuthForm";
+import { FcGoogle } from "react-icons/fc";
 
 const Auth = () => {
   const onSocialClick = async (event) => {
@@ -9,13 +10,14 @@ const Auth = () => {
     await authService.signInWithPopup(provider);
   };
   return (
-    <div>
+    <div className="authContainer">
       <AuthForm />
-      <div>
-        <button onClick={onSocialClick} name="google">
+      <button onClick={onSocialClick} name="google" className="authBtn">
+        <div className="authGoogleWrap">
+          <FcGoogle className="googleIcon" size="20" />
           Continue with Google
-        </button>
-      </div>
+        </div>
+      </button>
     </div>
   );
 };

@@ -29,9 +29,9 @@ const Home = ({ userObj }) => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <KyuwittFactory userObj={userObj} />
-      <div>
+      <div style={{ marginTop: 30 }}>
         {mention.map((mentions) => (
           <Kyuwitt
             key={mentions.id}

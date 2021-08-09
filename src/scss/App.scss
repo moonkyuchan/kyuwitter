@@ -1,0 +1,12 @@
+@import "../scss/Common.scss";
+
+.app_container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 60px;
+  }
+}
