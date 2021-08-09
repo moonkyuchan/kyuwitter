@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/kyuwitter/static/css/main.0bc60ccf.chunk.css",
+    "main.js": "/kyuwitter/static/js/main.21bafaa8.chunk.js",
+    "main.js.map": "/kyuwitter/static/js/main.21bafaa8.chunk.js.map",
+    "runtime-main.js": "/kyuwitter/static/js/runtime-main.12a093b8.js",
+    "runtime-main.js.map": "/kyuwitter/static/js/runtime-main.12a093b8.js.map",
+    "static/js/2.c0547fb1.chunk.js": "/kyuwitter/static/js/2.c0547fb1.chunk.js",
+    "static/js/2.c0547fb1.chunk.js.map": "/kyuwitter/static/js/2.c0547fb1.chunk.js.map",
+    "index.html": "/kyuwitter/index.html",
+    "static/css/main.0bc60ccf.chunk.css.map": "/kyuwitter/static/css/main.0bc60ccf.chunk.css.map",
+    "static/js/2.c0547fb1.chunk.js.LICENSE.txt": "/kyuwitter/static/js/2.c0547fb1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.12a093b8.js",
+    "static/js/2.c0547fb1.chunk.js",
+    "static/css/main.0bc60ccf.chunk.css",
+    "static/js/main.21bafaa8.chunk.js"
+  ]
+}
